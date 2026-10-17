@@ -46,7 +46,7 @@ const hamburger = {
 const secondBurger = structuredClone(hamburger); //
 const thirdBurger = structuredClone(hamburger); //
 
-// Quanti oggetti sono stati creati in memoria durante l'esecuzione di questo codice? Tre, ogni variabile (hamburger, secondBurger,thirdBurger) avrà l'oggetto uguale al primo , in questo caso hamburger
+// Quanti oggetti sono stati creati in memoria durante l'esecuzione di questo codice? Nove, l'oggetto hamburger e i suoi 2 corrispettivi oggetti annidati che sono 2 perciò in totale 3! Alla creazione di 2 structuredClone() avrò perciò 3 oggetti ciascuno più i 3 iniziali di hamburger = totale 9
 
 //SNACK-4
 
