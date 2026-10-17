@@ -21,12 +21,12 @@ const hamburger = {
 const secondBurger = {...hamburger};
 secondBurger.ingredients[0] = "Salad";
 ​
-console.log(hamburger.ingredients[0]); // ? cheese
+console.log(hamburger.ingredients[0]); // ? salad
 console.log(secondBurger.ingredients[0]); // ? salad
 
 // P.S.: Ricordati che gli Array, come gli oggetti, sono dei Reference Type (Tipi di Riferimento)!
 // Senza lanciare il codice, riesci a prevedere cosa viene stampato in console? 
-// Quanti oggetti sono stati creati in memoria durante l'esecuzione di questo codice? due , un oggetto di hamburger e un secondo di secondBurger che ha copiato tutte le proprietà di hamburger e poi ha sostuito l'ingrediente che sta all'index 0 con salad
+// Quanti oggetti sono stati creati in memoria durante l'esecuzione di questo codice? tre , un oggetto di hamburger, un secondo di secondBurger e il terzo l'array degli ingredienti. La shallowcopy non copia oggetti o array annidati ma solo il primo livello perciò l'array in questione rimane con un solo riferimento ed è per questo che vedremo salad in entrambi i casi
 
 // SNACK-3
 const hamburger = { 
