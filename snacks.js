@@ -3,7 +3,7 @@ const hamburger = { name: "Cheese Burger", weight: 250 };
 const secondBurger = hamburger;
 secondBurger.name = 'Double Cheese Burger';
 secondBurger.weight = 500;
-​
+
 console.log(hamburger.name); // ? Double Cheese Burger
 console.log(secondBurger.name ); // ? Double Cheese Burger
 
@@ -17,10 +17,10 @@ const hamburger = {
     weight: 250,
     ingredients: ["Cheese", "Meat", "Bread", "Tomato"]
 };
-​
+
 const secondBurger = {...hamburger};
 secondBurger.ingredients[0] = "Salad";
-​
+
 console.log(hamburger.ingredients[0]); // ? salad
 console.log(secondBurger.ingredients[0]); // ? salad
 
@@ -87,14 +87,14 @@ const hamburger = {
         age: 29
     }
 };
-​
+
 const newRestaurant = {...hamburger.maker.restaurant};
 newRestaurant.name = "Hyur's II";
 newRestaurant.address = "Second Street, 12";
 const secondBurger = {...hamburger};
 secondBurger.maker.restaurant = newRestaurant;
 secondBurger.maker.name = "Chef Hyur";
-​
+
 console.log(hamburger.maker.name); // ? "Chef Hyur"
 console.log(secondBurger.maker.name); // ? "Chef Hyur"
 console.log(hamburger.maker.restaurant.name); // "Hyur's II"
@@ -125,7 +125,7 @@ const chef = {
         isOpen: true,
     }
 }
-// Qual è il metodo migliore per clonare l’oggetto chef, e perché? direi che il modo migliore è una deep copy, nessuno di quelli affrontati insieme nelle videolezioni. lo spread operator darebbe problemi con gli oggetti annidati , il json.stringify e la shallowcopy comporterebbero problematiche per la funzione all'interno dell'oggetto stesso!
+// Qual è il metodo migliore per clonare l’oggetto chef, e perché? direi che il modo migliore è una deep copy, nessuno di quelli affrontati insieme nelle videolezioni. lo spread operator andrebbe scritto con molteplici oggetti annidati , il json.stringify e la shallowcopy comporterebbero problematiche per la funzione all'interno dell'oggetto stesso!
 
 //SNACK-BONUS
 
@@ -134,6 +134,32 @@ const chef = {
 // ⚠️ Serve usare una funzione ricorsiva! (fai un po’ di ricerca).
 
 // Creazione deep copy
+//type of messo a sx di un valore ci stampa in console che valore assume questa espressione(una stringa di che tipo è)
+function deepCopy(obj){
+    if(typeof obj !== 'object'){
+        return obj;
+    }
+
+    let copy = {};
+
+    //controllo sugli array
+    if(Array.isArray(obj)) {
+        copy = [];
+    }else {
+        copy = {};
+    }
+
+    for(const key in obj){
+        const value = obj[key];
+        if(typeof value !== 'object'){
+            copy[key] = obj[key];
+        }else{
+            copy[key] = deepCopy(value);
+        } 
+    }
+    return copy;
+}
+
 const chefCopy = deepCopy(chef);
 
 // Testiamo i metodi
