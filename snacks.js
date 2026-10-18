@@ -57,7 +57,8 @@ const chef = {
         console.log(`Ecco ${num} hamburger per te!`);
     },
 }
-​
+​const copiaChef = {...chef}
+
 const restaurant = {
     name: "Hyur's Burgers",
     address: {
@@ -68,8 +69,8 @@ const restaurant = {
     isOpen: false,
 };
 
-// Qual è il metodo migliore per clonare l’oggetto chef, e perché? Direi che il metodo migliore in questo caso è lo spread operator perchè l'oggetto contiene una funzione.Quindi direi const secondChef = {...chef, chef.makeBurger}
-// Qual è il metodo migliore per clonare l’oggetto restaurant, e perché? Invece in questo caso userei un structuredClone(restaurant) per la complessità di oggetti annidati ma sopratutto per la data (che nel cado di JSON.stringify avrebbe dato un risultato/valore diverso espresso appunto in stringa )
+// Qual è il metodo migliore per clonare l’oggetto chef, e perché? Direi che il metodo migliore in questo caso è lo spread operator perchè l'oggetto contiene una funzione.Quindi direi const copiaChef = {...chef}
+// Qual è il metodo migliore per clonare l’oggetto restaurant, e perché? Invece in questo caso userei un const restaurantCopy = structuredClone(restaurant) per la complessità di oggetti annidati ma sopratutto per la data (che nel cado di JSON.stringify avrebbe dato un risultato/valore diverso espresso appunto in stringa )
 
 //SNACK-5 
 
@@ -96,10 +97,10 @@ secondBurger.maker.name = "Chef Hyur";
 ​
 console.log(hamburger.maker.name); // ? "Chef Hyur"
 console.log(secondBurger.maker.name); // ? "Chef Hyur"
-console.log(hamburger.maker.restaurant.name); // "Hyur's Burgers"
+console.log(hamburger.maker.restaurant.name); // "Hyur's II"
 console.log(secondBurger.maker.restaurant.name); // "Hyur's II"
 // Senza lanciare il codice, riesci a prevedere cosa viene stampato in console?
-// Quanti oggetti sono stati creati in memoria durante l'esecuzione di questo codice? direi solo 2 , hamburger e secondBurger perchè newRestaurant è solo un oggetto annidato cambiato
+// Quanti oggetti sono stati creati in memoria durante l'esecuzione di questo codice? 5 in totale, il primo oggetto hamburger poi maker poi restaurant quindi siamo a 3, il nuovo maker di restaurant quindi uno solo, infine con lo spread operator una copia di hamburger in riferimento quindi nuovamente solo 1 
 
 // SNACK-6
 
